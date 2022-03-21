@@ -38,11 +38,10 @@ def main():
 
     # rust
     # compile to wasm
-    os.system("cd rust && wasm-pack build --target no-modules " +
+    os.system("cd rust && wasm-pack build --target no-modules --no-typescript " +
               ("--release" if is_release else ""))
     # copy js to build
     shutil.copy2("rust/pkg/rust_bg.wasm", "build/rust_bg.wasm")
-    minifie('rust/pkg/rust_bg.js', 'build/rust_bg.js')
     minifie("rust/pkg/rust.js", "build/rust.js")
 
     # elm
