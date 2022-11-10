@@ -8,4 +8,9 @@ async function main() {
   var app = Elm.Main.init({
     node: document.getElementById("elmDiv"),
   });
+
+  app.ports.sendMessage.subscribe(function (message) {
+    console.log(greet(message));
+    app.ports.messageReceiver.send(message);
+  });
 }
